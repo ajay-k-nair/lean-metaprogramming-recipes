@@ -11,6 +11,7 @@ set_option pp.rawOnError true
 #doc (Manual) "Commands" =>
 
 # What are Commands?
+{index}[Commands]
 
 Commands are instructions that change the environment.
 

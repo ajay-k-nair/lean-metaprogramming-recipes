@@ -9,6 +9,15 @@ $ lake exe metaprogramming-recipes
 
 The output will be in `_out/html-multi`.
 
+## Deployment
+
+The documentation is automatically built and deployed to GitHub Pages via GitHub Actions on every push to the `main` branch. 
+
+To ensure deployment works:
+1. Go to your repository settings.
+2. Select **Pages** from the sidebar.
+3. Under **Build and deployment > Source**, ensure **GitHub Actions** is selected.
+
 This cookbook is written in the `Manual` genre. It uses the same version of Lean for the example code as it does for Verso itself.
 
 # Code Samples

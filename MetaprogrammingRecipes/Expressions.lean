@@ -11,6 +11,7 @@ set_option pp.rawOnError true
 #doc (Manual) "Expressions" =>
 
 # What are Expressions?
+{index}[Expressions]
 
 In Lean, everything is an `Expr`.
 
