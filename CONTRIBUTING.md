@@ -1,6 +1,6 @@
-# Contributing to Lean 4 Metaprogramming Cookbook
+# Contributing to Lean 4 (Meta)programming Cookbook
 
-Thank you for your interest in contributing to the Lean 4 Metaprogramming Cookbook! We appreciate any help that makes this resource better for the community.
+Thank you for your interest in contributing to the Lean 4 (Meta)programming Cookbook! We appreciate any help that makes this resource better for the community.
 
 ## How to Contribute
 

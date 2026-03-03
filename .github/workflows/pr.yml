@@ -1,0 +1,25 @@
+name: Pull Request Check
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build and Verify Docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Lean Action (Build)
+        uses: leanprover/lean-action@v1
+        with:
+          # This builds the library and the executable target
+          build-args: metaprogramming-recipes
+
+      - name: Verify Docs Generation (EXE)
+        run: |
+          # This catches the "INTERNAL PANIC" that build might miss
+          lake exe metaprogramming-recipes

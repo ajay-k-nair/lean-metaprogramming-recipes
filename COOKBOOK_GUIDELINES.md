@@ -1,6 +1,8 @@
-# Lean 4 Metaprogramming Cookbook Guidelines
+# Lean 4 (Meta)programming Cookbook Guidelines
 
-Welcome to the Lean 4 Metaprogramming Cookbook. We appreciate you taking out time and reading through this document, to help everyone code better with Lean4. This document outlines how you should contribute to the cookbook.
+Welcome to the Lean 4 (Meta)programming Cookbook. We appreciate you taking out time and reading through this document, to help everyone code better with Lean4. This document outlines how you should contribute to the cookbook.
+
+Since we contain both programming and metaprogramming recipes, we name the repository "metaprogramming-recipes" to avoid confusion. This is meant to be inclusive of both types of recipes. We use "recipe" to refer to individual entries that solve specific problems, and "chapter" to refer to a collection of related recipes.
 
 ## Structure
 
