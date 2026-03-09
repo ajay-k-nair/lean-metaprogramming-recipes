@@ -7,7 +7,7 @@ import Cookbook.FileSystem
 import Cookbook.maintainingState
 import Cookbook.Tactics
 import Cookbook.Index
-import Cookbook.Example
+import Cookbook.buildingRecipe
 
 open Verso.Genre Manual
 open Verso.Genre.Manual.InlineLean
@@ -17,9 +17,12 @@ open Cookbook
 
 set_option pp.rawOnError true
 
--- All cookbook chapters should be below this --
-
 #doc (Manual) "Lean 4 (Meta)programming Cookbook" =>
+
+%%%
+tag := "lean-metaprogramming-cookbook"
+number := false
+%%%
 
 Welcome to the *Lean 4 (Meta)programming Cookbook*, a collection of recipes and examples for 
 programming and metaprogramming in Lean4. This cookbook provides a wide range of recipes, from basic to advanced which you can easily understand and integrate in your code.
@@ -51,6 +54,6 @@ Lean 4.
 
 {include 1 Cookbook.Tactics}
 
-{include 1 Cookbook.Example}
+{include 1 Cookbook.buildingRecipe}
 
 {include 1 Cookbook.Index}
