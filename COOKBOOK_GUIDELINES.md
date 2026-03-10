@@ -49,6 +49,7 @@ Please go through the [Example.lean](./Cookbook/Example.lean) recipe for a templ
 > Certain Exceptions to the above rules exist like a basic `helloWorldTactic.lean` recipe can be named to get started. If you would like, please use this as a getting started recipe in a new chapter. You can subinclude multiple recipes in the same file to give basic codes for getting started with a topic.
 
 3. **Titles**: Use descriptive and user-friendly titles for the recipe that can be easily understood by readers. The title should give a clear idea of what the recipe is about without being too technical.
+   - Title's first letter of first word should be capitalized, rest is upto you.
 
 ## Best Practices
 
