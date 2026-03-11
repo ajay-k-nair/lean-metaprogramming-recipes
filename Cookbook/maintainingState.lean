@@ -1,8 +1,8 @@
 import VersoManual
-import Cookbook.MaintainingState.stateMonads
-import Cookbook.MaintainingState.stateInCurrentEnvironmentIorefAndIomutex
-import Cookbook.MaintainingState.persistentStateEnvironmentExtensions
-import Cookbook.MaintainingState.attributesForCommands
+import Cookbook.MaintainingState.StateMonads
+import Cookbook.MaintainingState.StateInCurrentEnvironmentIorefAndIomutex
+import Cookbook.MaintainingState.PersistentStateEnvironmentExtensions
+import Cookbook.MaintainingState.AttributesForCommands
 
 open Verso.Genre Manual
 
@@ -12,7 +12,7 @@ open Verso.Genre Manual
 tag := "maintaining-state"
 number := false
 %%%
-{include 1 Cookbook.MaintainingState.stateMonads}
-{include 1 Cookbook.MaintainingState.stateInCurrentEnvironmentIorefAndIomutex}
-{include 1 Cookbook.MaintainingState.persistentStateEnvironmentExtensions}
-{include 1 Cookbook.MaintainingState.attributesForCommands}
+{include 1 Cookbook.MaintainingState.StateMonads}
+{include 1 Cookbook.MaintainingState.StateInCurrentEnvironmentIorefAndIomutex}
+{include 1 Cookbook.MaintainingState.PersistentStateEnvironmentExtensions}
+{include 1 Cookbook.MaintainingState.AttributesForCommands}

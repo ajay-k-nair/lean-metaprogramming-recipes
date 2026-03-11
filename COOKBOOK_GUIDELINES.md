@@ -10,7 +10,7 @@ The cookbook is organized into a hierarchy of chapters and recipes:
 
 - **Main Entry**: `Cookbook.lean` is the front page.
 - **Chapter Parent Files**: Located in `Cookbook/` (e.g., `Syntax.lean`, `Expressions.lean`). These define the chapter title and include individual recipes.
-- **Recipes**: Individual Lean files located in subdirectories (e.g., `Cookbook/Syntax/Commands.lean`).
+- **Recipes**: Individual Lean files located in subdirectories (e.g., `Cookbook/FileSystem/ReadingFromFile.lean`).
 
 ## Writing a New Recipe
 
@@ -20,21 +20,21 @@ Writing a new recipe is straightforward. Follow these steps to ensure your contr
 
 2. **Create a New File**: Add a `.lean` file in the appropriate subdirectory: `Cookbook/{CHAPTER_NAME}/{RecipeName}.lean`. You may add a new chapter if needed. Please read the Section on Naming Conventions below before naming your file.
 
-3. **Use the Template**: Copy the [templateRecipe.lean](./templateRecipe.lean) and modify it according to your recipe.
+3. **Use the Template**: Copy the [TemplateRecipe.lean](./TemplateRecipe.lean) and modify it according to your recipe.
 
 **Note**:
-The `tag` should be your filename and it is Very important to add this for indexing and cross-referencing purposes. It should be in `kebab-case` and should match the file name (without the `.lean` extension) exactly. For example, `readingFromFile.lean` should have `tag := "reading-from-file"`.
+The `tag` should be your filename and it is Very important to add this for indexing and cross-referencing purposes. It should be in `kebab-case` and should match the file name (without the `.lean` extension) exactly. For example, `ReadingFromFile.lean` should have `tag := "reading-from-file"`.
 
 The `number := false` option is used to prevent automatic numbering of the recipe, which is generally preferred for individual recipes.
 
-4. **Writing Recipe Content**: Follow the best practices outlined in this file and see [buildingRecipe](./Cookbook/buildingRecipe.lean) for an example of how to write different sections of the recipe.
+4. **Writing Recipe Content**: Follow the best practices outlined in this file and see [BuildingRecipe](./Cookbook/BuildingRecipe.lean) for an example of how to write different sections of the recipe.
 
 5. **Link to Chapter**: Add your file to the chapter's parent file to ensure it appears in the chapter and is indexed properly:
-   - Open the chapter's parent file (e.g., `Cookbook/{CHAPTER_NAME}.lean`).
+   - Open the chapter's parent file (e.g., `Cookbook/{ChapterName}.lean`).
    - Add `import Cookbook.{CHAPTER_NAME}.{RecipeName}` at the top.
    - Include it using `{include 1 Cookbook.{CHAPTER_NAME}.{RecipeName}}`. If you think the recipe should come before other recipes, add it before the existing ones properly, otherwise add it at the end.
 
-Please go through the [Example.lean](./Cookbook/Example.lean) recipe for a template to follow.
+Please go through the [BuildingRecipe.lean](./Cookbook/BuildingRecipe.lean) on more details for writing a recipe. See [TemplateRecipe.lean](./TemplateRecipe.lean) for a template to start with.
 
 ## Naming Conventions for Chapters, Files and Titles
 
@@ -42,11 +42,11 @@ Please go through the [Example.lean](./Cookbook/Example.lean) recipe for a templ
 
 2. **Files**: Use concise and technical names for recipe files that reflect the specific problem being solved, but not too verbose. See existing recipes for examples.
    - Avoid using the same name as the chapter to prevent confusion.
-   - Use CamelCase for file names (e.g., `readingFromFile.lean` instead of `reading_from_file.lean`).
+   - Use PascalCase(or UpperCamelCase) for file names (e.g., `ReadingFromFile.lean` instead of `reading_from_file.lean` or `Reading-from-File.lean`).
    - Do not use symbols or numbers in file names. Use words to describe them (e.g., `And` instead of `&`, `Zero` instead of `0`, etc.).
-   - The file name should be meaningful based on the recipe content. AVoid using generic names or adjectives, like `anEasyMacro.lean`, `aUsefulTactic.lean`, etc. If you think the recipe is easy or useful, you can index it accordingly or you can mention about that in the description, which the Verso Search will pick up for finding your recipe.
+   - The file name should be meaningful based on the recipe content. AVoid using generic names or adjectives, like `AnEasyMacro.lean`, `AUsefulTactic.lean`, etc. If you think the recipe is easy or useful, you can index it accordingly or you can mention about that in the description, which the Verso Search will pick up for finding your recipe.
 
-> Certain Exceptions to the above rules exist like a basic `helloWorldTactic.lean` recipe can be named to get started. If you would like, please use this as a getting started recipe in a new chapter. You can subinclude multiple recipes in the same file to give basic codes for getting started with a topic.
+> Certain Exceptions to the above rules exist like a basic `HelloWorldTactic.lean` recipe can be named to get started. If you would like, please use this as a getting started recipe in a new chapter. You can subinclude multiple recipes in the same file to give basic codes for getting started with a topic.
 
 3. **Titles**: Use descriptive and user-friendly titles for the recipe that can be easily understood by readers. The title should give a clear idea of what the recipe is about without being too technical.
    - Title's first letter of first word should be capitalized, rest is upto you.

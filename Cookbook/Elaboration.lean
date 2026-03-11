@@ -1,5 +1,5 @@
 import VersoManual
-import Cookbook.Elaboration.elaboratingTermsCommandsAndTactics
+import Cookbook.Elaboration.ElaboratingTermsCommandsAndTactics
 
 open Verso.Genre Manual
 
@@ -10,4 +10,4 @@ tag := "elaboration"
 number := false
 %%%
 
-{include 1 Cookbook.Elaboration.elaboratingTermsCommandsAndTactics}
+{include 1 Cookbook.Elaboration.ElaboratingTermsCommandsAndTactics}

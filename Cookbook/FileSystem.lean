@@ -1,9 +1,9 @@
 import VersoManual
-import Cookbook.FileSystem.readingFromFile
-import Cookbook.FileSystem.writingToFile
-import Cookbook.FileSystem.runningAnExternalProgram
-import Cookbook.FileSystem.creatingDirectories
-import Cookbook.FileSystem.deletingFileOrDirectory
+import Cookbook.FileSystem.ReadingFromFile
+import Cookbook.FileSystem.WritingToFile
+import Cookbook.FileSystem.RunningAnExternalProgram
+import Cookbook.FileSystem.CreatingDirectories
+import Cookbook.FileSystem.DeletingFileOrDirectory
 import Cookbook.FileSystem.ReadWriteJson
 import Cookbook.FileSystem.ReadWriteJsonl
 import Cookbook.FileSystem.Miscellaneous
@@ -17,11 +17,11 @@ tag := "file-system"
 number := false
 %%%
 
-{include 1 Cookbook.FileSystem.readingFromFile}
-{include 1 Cookbook.FileSystem.writingToFile}
-{include 1 Cookbook.FileSystem.creatingDirectories}
-{include 1 Cookbook.FileSystem.deletingFileOrDirectory}
-{include 1 Cookbook.FileSystem.runningAnExternalProgram}
+{include 1 Cookbook.FileSystem.ReadingFromFile}
+{include 1 Cookbook.FileSystem.WritingToFile}
+{include 1 Cookbook.FileSystem.CreatingDirectories}
+{include 1 Cookbook.FileSystem.DeletingFileOrDirectory}
+{include 1 Cookbook.FileSystem.RunningAnExternalProgram}
 {include 1 Cookbook.FileSystem.ReadWriteJson}
 {include 1 Cookbook.FileSystem.ReadWriteJsonl}
 {include 1 Cookbook.FileSystem.Miscellaneous}

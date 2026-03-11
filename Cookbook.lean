@@ -5,10 +5,10 @@ import Cookbook.Overview
 import Cookbook.Expressions
 import Cookbook.Syntax
 import Cookbook.FileSystem
-import Cookbook.maintainingState
+import Cookbook.MaintainingState
 import Cookbook.Tactics
 import Cookbook.Index
-import Cookbook.buildingRecipe
+import Cookbook.BuildingRecipe
 import Cookbook.Elaboration
 
 open Verso.Genre Manual
@@ -58,8 +58,8 @@ Lean 4.
 
 {include 1 Cookbook.FileSystem}
 
-{include 1 Cookbook.maintainingState}
+{include 1 Cookbook.MaintainingState}
 
-{include 0 Cookbook.buildingRecipe}
+{include 0 Cookbook.BuildingRecipe}
 
 {include 0 Cookbook.Index}

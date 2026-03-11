@@ -1,12 +1,12 @@
 import VersoManual
 import Cookbook.Expressions.TypesOfExpressions
-import Cookbook.Expressions.displayingExpressionsInInfoView
-import Cookbook.Expressions.syntaxStringsFromExpressions
-import Cookbook.Expressions.matchingExpressionsExactMatch
-import Cookbook.Expressions.matchingExpressionsWithSolving
-import Cookbook.Expressions.buildingExpressionsForFunctionApplications
-import Cookbook.Expressions.buildingExpressionsWithVariablesFunctionsAndDependentFunctionTypes
-import Cookbook.Expressions.replacingCodeUsingTryThis
+import Cookbook.Expressions.DisplayingExpressionsInInfoView
+import Cookbook.Expressions.SyntaxStringsFromExpressions
+import Cookbook.Expressions.MatchingExpressionsExactMatch
+import Cookbook.Expressions.MatchingExpressionsWithSolving
+import Cookbook.Expressions.BuildingExpressionsForFunctionApplications
+import Cookbook.Expressions.BuildingExpressionsWithVariablesFunctionsAndDependentFunctionTypes
+import Cookbook.Expressions.ReplacingCodeUsingTryThis
 
 open Verso.Genre Manual
 
@@ -20,10 +20,10 @@ number := false
 In this chapter we collect recipes to manipulate expressions including building and pattern-matching.
 
 {include 1 Cookbook.Expressions.TypesOfExpressions}
-{include 1 Cookbook.Expressions.displayingExpressionsInInfoView}
-{include 1 Cookbook.Expressions.syntaxStringsFromExpressions}
-{include 1 Cookbook.Expressions.matchingExpressionsExactMatch}
-{include 1 Cookbook.Expressions.matchingExpressionsWithSolving}
-{include 1 Cookbook.Expressions.buildingExpressionsForFunctionApplications}
-{include 1 Cookbook.Expressions.buildingExpressionsWithVariablesFunctionsAndDependentFunctionTypes}
-{include 1 Cookbook.Expressions.replacingCodeUsingTryThis}
+{include 1 Cookbook.Expressions.DisplayingExpressionsInInfoView}
+{include 1 Cookbook.Expressions.SyntaxStringsFromExpressions}
+{include 1 Cookbook.Expressions.MatchingExpressionsExactMatch}
+{include 1 Cookbook.Expressions.MatchingExpressionsWithSolving}
+{include 1 Cookbook.Expressions.BuildingExpressionsForFunctionApplications}
+{include 1 Cookbook.Expressions.BuildingExpressionsWithVariablesFunctionsAndDependentFunctionTypes}
+{include 1 Cookbook.Expressions.ReplacingCodeUsingTryThis}
