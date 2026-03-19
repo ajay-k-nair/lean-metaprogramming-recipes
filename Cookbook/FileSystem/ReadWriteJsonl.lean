@@ -1,15 +1,18 @@
 import VersoManual
 import Cookbook.Lean
 
-open Verso.Genre Manual
+open Verso.Genre Manual Cookbook
 open Verso.Genre.Manual.InlineLean
 
 open Lean Elab Meta Tactic Command
-open Cookbook
 
 set_option pp.rawOnError true
 
 #doc (Manual) "Handling JSONL File" =>
+
+
+::: contributors
+:::
 
 {index}[Handling JSONL files]
 
@@ -24,10 +27,11 @@ number := false
 
 {index}[Reading JSONL files]
 
-To read a JSONL file, we use `IO.FS.lines` to get an array of strings and then parse each non-empty line.
+To read a JSONL file, we use {lean}`IO.FS.lines` to get an array of strings and then parse each non-empty line.
 
 ```lean
-def readJsonlFile (path : System.FilePath) : IO (Array Json) := do
+def readJsonlFile (path : System.FilePath) :
+    IO (Array Json) := do
   let lines ← IO.FS.lines path
   let mut result := #[]
   for line in lines do
@@ -35,7 +39,8 @@ def readJsonlFile (path : System.FilePath) : IO (Array Json) := do
     if line.isEmpty then continue
     match Json.parse line with
     | .ok j => result := result.push j
-    | .error err => throw <| IO.userError s!"Failed to parse line: {err}"
+    | .error err =>
+      throw <| IO.userError s!"Failed to parse line: {err}"
   return result
 ```
 
@@ -48,14 +53,16 @@ number := false
 
 {index}[Writing JSONL files]
 
-When writing JSONL, each object must be rendered as a single line without internal newlines. You can use `.compress` to ensure the output is compact.
+When writing JSONL, each object must be rendered as a single line without internal newlines. You can use {lean}`Lean.Json.compress` to ensure the output is compact.
 
 1. Writing an array of JSON objects
 
 ```lean
-def writeJsonlFile (path : System.FilePath) (data : Array Json) : IO Unit := do
+def writeJsonlFile (path : System.FilePath)
+  (data : Array Json) : IO Unit := do
   let lines := data.map (·.compress)
-  IO.FS.writeFile path (String.intercalate "\n" lines.toList ++ "\n")
+  IO.FS.writeFile path (String.intercalate "\n"
+    lines.toList ++ "\n")
 ```
 
 2. Writing custom structures to JSONL
@@ -69,7 +76,8 @@ structure LogEntry where
   message   : String
 deriving ToJson
 
-def writeLogs (path : System.FilePath) (logs : Array LogEntry) : IO Unit := do
+def writeLogs (path : System.FilePath)
+    (logs : Array LogEntry) : IO Unit := do
   IO.FS.withFile path .write fun handle => do
     for log in logs do
       handle.putStrLn (toJson log).compress

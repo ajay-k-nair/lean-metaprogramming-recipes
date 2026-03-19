@@ -1,11 +1,10 @@
 import VersoManual
 import Cookbook.Lean
 
-open Verso.Genre Manual
+open Verso.Genre Manual Cookbook
 open Verso.Genre.Manual.InlineLean
 
 open Lean Elab Meta Tactic Command
-open Cookbook
 
 set_option pp.rawOnError true
 
@@ -16,6 +15,9 @@ tag := "handling-std-streams"
 number := false
 %%%
 
+::: contributors
+:::
+
 # How to Read from Stdin
 
 %%%
@@ -25,7 +27,7 @@ number := false
 
 {index}[Reading from Stdin]
 
-To read from `stdin`, you can use the `(← IO.getStdin).getLine` function, which reads a line of input from the standard input stream and returns it as a string.
+To read from `stdin`, you can use the {lean}`IO.FS.Stream.getLine` function, which reads a line of input from the standard input stream and returns it as a {lean}`IO String`.
 
 ```lean
 def readFromStdin : IO Unit := do
@@ -35,7 +37,7 @@ def readFromStdin : IO Unit := do
   IO.println s!"You entered: {input.trimAscii}"
 ```
 
-For more complex input handling, you can use `IO.getStdin` directly to read characters or the entire content until EOF.
+For more complex input handling, you can use {lean}`IO.getStdin` directly to read characters or the entire content until EOF.
 
 ```lean
 def readAllFromStdin : IO String := do
@@ -48,8 +50,11 @@ def readAllFromStdin : IO String := do
 A common pattern in CLI tools is to request specific types of data (like numbers) and re-prompt the user if the input is invalid.
 
 ```lean
-/-- Repeatedly prompts the user until a valid natural number within range is provided. -/
-partial def getBoundedNat (prompt : String) (low high : Nat) : IO Nat := do
+
+/-- Repeatedly prompts the user until a valid natural number
+within range is provided. -/
+partial def getBoundedNat (prompt : String)
+    (low high : Nat) : IO Nat := do
   IO.print s!"{prompt} ({low}-{high}): "
   (← IO.getStdout).flush
   let input ← (← IO.getStdin).getLine
@@ -71,17 +76,17 @@ def playerInput : IO Unit := do
   let age ← getBoundedNat "Enter age" 1 150
   let level ← getBoundedNat "Enter starting level" 1 99
   
-  IO.println s!"\nWelcome, {name.trim}!"
+  IO.println s!"\nWelcome, {name.trimAscii}!"
   IO.println s!"Stats: Age {age}, Level {level}"
 ```
 
-In this example, we use `partial` for `getBoundedNat` because it is a recursive function that might theoretically run forever if the user never provides valid input.
+In this example, we use `partial` for {lean}`getBoundedNat` because it is a recursive function that might theoretically run forever if the user never provides valid input.
 
 # How to Print to Stdout and Stderr
 
 {index}[Printing to Stdout and Stderr]
 
-You can print to `stdout` and `stderr` using the `IO.println` and `IO.eprintln` functions, respectively. Just like any other language, the `ln` is used to add a newline at the end of the output.
+You can print to `stdout` and `stderr` using the {name}`IO.println` and {name}`IO.eprintln` functions, respectively. Just like any other language, the `ln` is used to add a newline at the end of the output.
 
 ```lean
 def printToStdout : IO Unit := do
@@ -108,20 +113,21 @@ def showProgressBar (n: Nat) : IO Unit := do
     let progress := i * 10
     let filled := String.ofList (List.replicate i '#')
     let empty := String.ofList (List.replicate (10-i) '-')
-    -- \r moves the cursor back to the start of the current line
+    -- \r moves the cursor back to the
+    -- start of the current line
     IO.print s!"\rProgress: [{filled}{empty}] {progress}%"
     (← IO.getStdout).flush
     IO.sleep 200 -- Sleep for 200ms
   IO.println "\nTask Complete!"
 
 def showSpinner (n: Nat) : IO Unit := do
-  let spinnerChars := ["|", "/", "-", "\\"]
+  let spinChars := ["|", "/", "-", "\\"]
   for i in [1:n] do
-    let spinnerChar := spinnerChars[i % spinnerChars.length]!
-    IO.print s!"\rProcessing... {spinnerChar}"
+    let spinChar := spinChars[i % spinChars.length]!
+    IO.print s!"\rProcessing... {spinChar}"
     (← IO.getStdout).flush
     IO.sleep 100 -- 100ms is a better speed for a spinner
-  IO.print "\rDone!          " -- Overwrite with spaces to clear the line
+  IO.print "\rDone!          "
   IO.println ""
 
 
@@ -140,8 +146,8 @@ If you want to bold, italics, or add colors to the text, you can do so with ANSI
 
 ```lean
 /-- Wraps a string in ANSI escape codes for coloring. -/
-def colorize (text : String) (colorCode : String) : String :=
-  s!"\x1b[{colorCode}m{text}\x1b[0m"
+def colorize (msg : String) (colorCode : String) : String :=
+  s!"\x1b[{colorCode}m{msg}\x1b[0m"
 
 def printStatus : IO Unit := do
   IO.println s!"Status: {colorize "SUCCESS" "32"}" -- Green

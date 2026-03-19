@@ -1,26 +1,28 @@
 import VersoManual
 import Cookbook.Lean
 
-open Verso.Genre Manual
+open Verso.Genre Manual Cookbook
 open Verso.Genre.Manual.InlineLean
 
 open Lean Elab Meta Tactic Command
-open Cookbook
 
 set_option pp.rawOnError true
 
 #doc (Manual) "Parsing Command Line Arguments" =>
+
+::: contributors
+:::
+
+{index}[Parsing Command Line Arguments]
+
+# Parsing Command Line Arguments
 
 %%%
 tag := "parsing-cli-args"
 number := false
 %%%
 
-{index}[Parsing Command Line Arguments]
-
-# Parsing Command Line Arguments
-
-In Lean 4, the most common and idiomatic way to access command-line arguments is to define your `main` function to accept a `List String`. When you run your executable, Lean automatically populates this list with the arguments provided.
+In Lean 4, the most common and idiomatic way to access command-line arguments is to define your `main` function to accept a {lean}`List String`. When you run your executable, Lean automatically populates this list with the arguments provided.
 
 ```lean
 def getCliArgs (args : List String) : IO Unit := do
@@ -39,13 +41,18 @@ For many tools, you just need to check for specific flags or a single input file
 def parseArgs (args : List String) : IO Unit := do
   match args with
   | [] | ["--help"] | ["-h"] =>
-    IO.println "Usage: mytool [OPTIONS] [FILE]\n\nOptions:\n  -h, --help     Show this help\n  -v, --version  Show version"
+    IO.println "Usage: mytool [OPTIONS] [FILE]\n"
+    IO.println "Options:"
+    IO.println "  -h, --help     Show this help"
+    IO.println "  -v, --version  Show version"
+
   | ["--version"] | ["-v"] =>
     IO.println "mytool version 1.0.0"
   | [filename] =>
     IO.println s!"Processing file: {filename}"
   | _ =>
-    IO.eprintln "Error: Unknown or too many arguments. Use --help for usage."
+    IO.eprintln "Error: Unknown or too many arguments.
+      Use --help for usage."
     IO.Process.exit 1
 ```
 
@@ -60,8 +67,10 @@ structure CliConfig where
   inputFiles : List String := []
 deriving Repr
 
-/-- Recursively parses arguments into a CliConfig structure. -/
-partial def parseConfig (args : List String) (cfg : CliConfig := {}) : CliConfig :=
+/-- Recursively parses arguments
+  into a CliConfig structure. -/
+partial def parseConfig (args : List String)
+  (cfg : CliConfig := {}) : CliConfig :=
   match args with
   | [] => cfg
   | "-v" :: rest | "--verbose" :: rest =>
@@ -69,7 +78,8 @@ partial def parseConfig (args : List String) (cfg : CliConfig := {}) : CliConfig
   | "-o" :: file :: rest | "--output" :: file :: rest =>
     parseConfig rest { cfg with outputFile := some file }
   | file :: rest =>
-    parseConfig rest { cfg with inputFiles := cfg.inputFiles ++ [file] }
+    parseConfig rest { cfg with inputFiles :=
+      cfg.inputFiles ++ [file] }
 
 def runParser (args : List String) : IO Unit := do
   let cfg := parseConfig args

@@ -1,15 +1,17 @@
 import VersoManual
 import Cookbook.Lean
 
-open Verso.Genre Manual
+open Verso.Genre Manual Cookbook
 open Verso.Genre.Manual.InlineLean
 
 open Lean Elab Meta Tactic Command
-open Cookbook
 
 set_option pp.rawOnError true
 
 #doc (Manual) "Time Measurement of Process" =>
+
+::: contributors
+:::
 
 # Timing a Process for Performance Measurement
 
@@ -19,7 +21,6 @@ number := false
 %%%
 
 {index}[Timing performance]
-{index}[Put a Process to Sleep]
 
 Lean 4 provides high-precision monotonic clocks for measuring performance and functions for pausing execution.
 
@@ -37,7 +38,7 @@ def timeTask : IO Unit := do
 
 ## High-Precision Timing (Nanoseconds)
 
-If you need even higher precision, you can use `IO.monoNanosNow`.
+If you need even higher precision, you can use {lean}`IO.monoNanosNow`.
 
 ```lean
 def preciseTiming : IO Unit := do
