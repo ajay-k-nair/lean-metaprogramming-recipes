@@ -25,6 +25,10 @@ number := false
 Lean allows  to define custom syntax for a `term`. One convenient way to do this is to use `macro` or `elab`, which let you specify both the syntax and its behavior in one place.
 
 # Syntax for Python exponentiation
+%%%
+tag := "syntax-for-python-exponentiation"
+number := false
+%%%
 {index}[Python exponentiation DSL]
 
 We will start with a simple example for parsing Python exponentiation syntax in Lean. The following `macro` declaration tells Lean how to parse something of the form `2**4` and expands it into Lean's exponentiation syntax.
@@ -38,6 +42,10 @@ macro n:num "**" m:num : term => `($n^$m)
 Here, `num` is a parser that accepts strictly numeric literals and rejects everything else.
 
 # Syntax for Python `for` loop
+%%%
+tag := "syntax-for-python-for-loop"
+number := false
+%%%
 {index}[Python `for` loop DSL]
 
 In Python, list comprehensions provide a concise way to create lists. For example, the expression `[x^2 for x in [1,2,3,4,5]]` generates a list of the squares of the first five natural numbers. We will define similar syntax in Lean and then implement the logic to evaluate it.
@@ -49,6 +57,10 @@ In Lean, this can be accomplished by using the {lean}`List.map` function.
 ```
 
 ## A `macro` that parses Python-like `for` loop
+%%%
+tag := "macro-for-python-for-loop"
+number := false
+%%%
 
 Next, we define a `macro` that lets us write syntax similar to Python syntax in Lean. It parses expressions of the form `[<term> pyfor <ident> in <term>]` and transforms them into a standard Lean expression using {lean}`List.map`. The `ident` is a placeholder for the variable name used in the comprehension, and the two `term` placeholders represent the expression being generated and the collection being iterated over.
 
@@ -61,6 +73,11 @@ macro "[" t:term "pyfor" x:ident "in" l:term "]": term => do
 ```
 
 ## An elaborator that parses Python-like `for` loop
+
+%%%
+tag := "elaborator-for-python-for-loop"
+number := false
+%%%
 
 Here is a more robust and complete implementation using an elaborator (`elab`). This version checks whether the collection being iterated over is a {lean}`List` or an {lean}`Array` and handles each case accordingly:
 

@@ -11,7 +11,7 @@ set_option pp.rawOnError true
 #doc (Manual) "Adding syntax for commands" =>
 
 %%%
-tag := "introducing-commands-checking-that-something-can-be-proved-by-grind"
+tag := "adding-syntax-for-command"
 number := false
 %%%
 
@@ -24,6 +24,13 @@ number := false
 Lean allows you to define custom syntax for a `command`. One convenient way to do this is to use `elab`, which lets you specify both the syntax and its elaboration in one place.
 
 # "Hello World" command
+
+%%%
+tag := "hello-world-command"
+number := false
+%%%
+
+
 {index}["Hello World" Command]
 
 We start with a simple example of a command that prints "Hello World". The following `elab` declaration tells Lean to parse `#helloWorld` as a command and explains what that command should do.
@@ -37,6 +44,12 @@ elab "#helloWorld" : command => do
 Here, `logInfo s` prints the string `s` in the InfoView.
 
 # Command for checking whether a proposition is solved by grind
+
+%%%
+tag := "command-for-checking-whether-a-proposition-is-solved-by-grind"
+number := false
+%%%
+
 {index}[Command for checking whether a proposition is solved by grind]
 We define a custom command that tests whether a proposition can be solved automatically by the {lean}`grind` tactic. The goal is to provide a small command-line-style tool that reports whether {lean}`grind` can close a goal.
 
