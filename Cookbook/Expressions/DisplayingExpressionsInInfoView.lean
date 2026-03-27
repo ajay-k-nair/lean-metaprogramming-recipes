@@ -20,7 +20,3 @@ number := false
 
 
 {index}[Displaying in the Infoview]
-
-In this recipe, we will look at various ways of displaying in the infoview that would help in debugging and conveying important information to the user while running a lean program.
-
-# {name}`logInfo`
