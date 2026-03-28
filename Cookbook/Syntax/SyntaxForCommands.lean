@@ -78,7 +78,7 @@ elab "#grindable?" t:term : command => do
 
 Let's break down the specific metaprogramming functions used in the elaborator above:
 - The call to {name}`Command.liftTermElabM` is needed because command elaboration happens in the {name}`CommandElabM` monad, while elaborating terms and running tactics uses the term elaboration machinery in the {name}`TermElabM` monad.
-- Lean's elaborator turns elaboration errors into sorries by default. {name}`withoutErrToSorry` prevents that from happening, so we can catch the exceptions thrown while elaborating.
+- Lean's elaborator sometimes turns elaboration errors into sorries. {name}`withoutErrToSorry` prevents that from happening, so we can catch the exceptions thrown while elaborating.
 - We write a `try … catch` block and place {name}`withoutErrToSorry` inside the `try` block.
 - {name}`Lean.Elab.Term.elabTerm` elaborates the user-provided proposition (i.e., `t`) into an expression.
 - Then {name}`mkFreshExprMVar` creates a fresh metavariable goal whose type is given as an expression (i.e., `tExpr`).
